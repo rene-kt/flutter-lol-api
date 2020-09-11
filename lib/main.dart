@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:FlutterGifGallery/service/requisitions.service.dart';
 
+import 'models/champion.model.dart';
 import 'models/user.model.dart';
 
 void main() {
@@ -20,16 +21,15 @@ class _HomeState extends State<Home> {
   TextEditingController textController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   User user = User();
+  Champion champ = Champion();
 
-  Widget returnFutureBuilder() {
+  Widget returnFutureBuilderId() {
     return FutureBuilder<Map>(
       future: requisition.returnSummonerId(textController.text),
       builder: (context, snapshot) {
         user.id = snapshot.data["id"];
         user.summonerLevel = snapshot.data["summonerLevel"];
         user.profileIconId = snapshot.data["profileIconId"];
-
-        print("PROFILE ICON " + user.profileIconId.toString());
 
         return Column(children: <Widget>[
           Text(textController.text),
@@ -38,6 +38,24 @@ class _HomeState extends State<Home> {
         ]);
       },
     );
+  }
+
+  Widget returnFutureBuilderChamps() {
+    return FutureBuilder<List>(
+        future: requisition.returnChampions(user.id),
+        builder: (context, snapshot) {
+          user.championsId1 = snapshot.data[0]["championId"];
+          user.championsId2 = snapshot.data[1]["championId"];
+          user.championsId3 = snapshot.data[2]["championId"];
+
+          champ.champ
+
+          return Column(children: <Widget>[
+            Text(user.championsId1.toString()),
+            Text(user.championsId2.toString()),
+            Text(user.championsId3.toString())
+          ]);
+        });
   }
 
   @override
@@ -68,13 +86,18 @@ class _HomeState extends State<Home> {
                       requisition.returnSummonerId(textController.text);
 
                       setState(() {
-                        returnFutureBuilder();
+                        returnFutureBuilderId();
+                        returnFutureBuilderChamps();
                       });
                     },
                     child: Text("Submit")),
                 Padding(
                   padding: EdgeInsets.only(top: 15.0),
-                  child: returnFutureBuilder(),
+                  child: returnFutureBuilderId(),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 25.0),
+                  child: returnFutureBuilderChamps(),
                 )
               ],
             )),

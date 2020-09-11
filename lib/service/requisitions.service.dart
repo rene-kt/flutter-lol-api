@@ -12,8 +12,15 @@ class Requisition {
 
     http.Response response =
         await http.get(urlSummoner + summonerName + "?" + "api_key=" + key);
+    return json.decode(response.body);
+  }
+
+  Future<List> returnChampions(String id) async {
+    String urlChampion = baseUrl + RiotApi.championsUrl;
+
+    http.Response response =
+        await http.get(urlChampion + id + "?" + "api_key=" + key);
     print(response.body);
-    print(urlSummoner + summonerName + "?" + "api_key=" + key);
     return json.decode(response.body);
   }
 }
