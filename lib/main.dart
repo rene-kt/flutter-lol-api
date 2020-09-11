@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:FlutterGifGallery/service/requisitions.service.dart';
 
+import 'models/user.model.dart';
+
 void main() {
   runApp(MaterialApp(
     home: Home(),
@@ -17,16 +19,23 @@ class _HomeState extends State<Home> {
 
   TextEditingController textController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-  String id;
+  User user = User();
 
   Widget returnFutureBuilder() {
     return FutureBuilder<Map>(
       future: requisition.returnSummonerId(textController.text),
       builder: (context, snapshot) {
-        id = snapshot.data["id"];
-        print("ENTROU");
-        print("ID DE USER: " + id);
-        return Text("teste");
+        user.id = snapshot.data["id"];
+        user.summonerLevel = snapshot.data["summonerLevel"];
+        user.profileIconId = snapshot.data["profileIconId"];
+
+        print("PROFILE ICON " + user.profileIconId.toString());
+
+        return Column(children: <Widget>[
+          Text(textController.text),
+          Text(user.summonerLevel.toString()),
+          Text(user.profileIconId.toString()),
+        ]);
       },
     );
   }
@@ -56,8 +65,11 @@ class _HomeState extends State<Home> {
                     }),
                 RaisedButton(
                     onPressed: () {
-                      print(textController.text);
                       requisition.returnSummonerId(textController.text);
+
+                      setState(() {
+                        returnFutureBuilder();
+                      });
                     },
                     child: Text("Submit")),
                 Padding(
