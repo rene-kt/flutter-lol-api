@@ -17,6 +17,19 @@ class _HomeState extends State<Home> {
 
   TextEditingController textController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  String id;
+
+  Widget returnFutureBuilder() {
+    return FutureBuilder<Map>(
+      future: requisition.returnSummonerId(textController.text),
+      builder: (context, snapshot) {
+        id = snapshot.data["id"];
+        print("ENTROU");
+        print("ID DE USER: " + id);
+        return Text("teste");
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,30 +38,35 @@ class _HomeState extends State<Home> {
         title: Text("Riot games api"),
       ),
       body: SingleChildScrollView(
-          child: Form(
-              key: formKey,
-              child: Column(
-                children: <Widget>[
-                  TextFormField(
-                      controller: textController,
-                      decoration: const InputDecoration(
-                        hintText: 'Type the summoner name',
-                      ),
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return "Please, enter some text";
-                        } else {
-                          return null;
-                        }
-                      }),
-                  RaisedButton(
-                      onPressed: () {
-                        print(textController.text);
-                        requisition.returnSummonerId(textController.text);
-                      },
-                      child: Text("Submit"))
-                ],
-              ))),
+        child: Form(
+            key: formKey,
+            child: Column(
+              children: <Widget>[
+                TextFormField(
+                    controller: textController,
+                    decoration: const InputDecoration(
+                      hintText: 'Type the summoner name',
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "Please, enter some text";
+                      } else {
+                        return null;
+                      }
+                    }),
+                RaisedButton(
+                    onPressed: () {
+                      print(textController.text);
+                      requisition.returnSummonerId(textController.text);
+                    },
+                    child: Text("Submit")),
+                Padding(
+                  padding: EdgeInsets.only(top: 15.0),
+                  child: returnFutureBuilder(),
+                )
+              ],
+            )),
+      ),
     );
   }
 }
