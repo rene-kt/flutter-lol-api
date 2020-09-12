@@ -1,4 +1,4 @@
 class Champion {
-  int championPoints;
+  Map champKey = Map();
   String championName;
 }

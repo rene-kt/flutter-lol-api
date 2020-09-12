@@ -1,3 +1,4 @@
+import 'package:FlutterGifGallery/service/getChampions.service.dart';
 import 'package:flutter/material.dart';
 import 'package:FlutterGifGallery/service/requisitions.service.dart';
 
@@ -44,16 +45,22 @@ class _HomeState extends State<Home> {
     return FutureBuilder<List>(
         future: requisition.returnChampions(user.id),
         builder: (context, snapshot) {
-          user.championsId1 = snapshot.data[0]["championId"];
-          user.championsId2 = snapshot.data[1]["championId"];
-          user.championsId3 = snapshot.data[2]["championId"];
+          champ.champKey["id"] = snapshot.data[0]["championId"];
+          champ.champKey["name"] =
+              GetChampions.getChampionNameById(snapshot.data[0]["championId"]);
 
-          champ.champ
+          champ.champKey["id"] = snapshot.data[1]["championId"];
+          champ.champKey["name"] =
+              GetChampions.getChampionNameById(snapshot.data[1]["championId"]);
+
+          champ.champKey["id"] = snapshot.data[2]["championId"];
+          champ.champKey["name"] =
+              GetChampions.getChampionNameById(snapshot.data[2]["championId"]);
+
+          print(champ.champKey.toString());
 
           return Column(children: <Widget>[
-            Text(user.championsId1.toString()),
-            Text(user.championsId2.toString()),
-            Text(user.championsId3.toString())
+            Text("teste"),
           ]);
         });
   }
