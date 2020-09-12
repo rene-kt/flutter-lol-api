@@ -22,7 +22,6 @@ class _HomeState extends State<Home> {
   TextEditingController textController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   User user = User();
-  Champion champ = Champion();
 
   Widget returnFutureBuilderId() {
     return FutureBuilder<Map>(
@@ -45,19 +44,17 @@ class _HomeState extends State<Home> {
     return FutureBuilder<List>(
         future: requisition.returnChampions(user.id),
         builder: (context, snapshot) {
-          champ.champKey["id"] = snapshot.data[0]["championId"];
-          champ.champKey["name"] =
-              GetChampions.getChampionNameById(snapshot.data[0]["championId"]);
+          for (var i = 0; i <= 2; i++) {
+            Champion champ = Champion();
+            champ.championId = snapshot.data[i]["championId"];
+            champ.championName =
+                GetChampions.getChampionNameById(champ.championId);
+            champ.championsPoints = snapshot.data[i]["championPoints"];
 
-          champ.champKey["id"] = snapshot.data[1]["championId"];
-          champ.champKey["name"] =
-              GetChampions.getChampionNameById(snapshot.data[1]["championId"]);
+            user.champs.add(champ);
+          }
 
-          champ.champKey["id"] = snapshot.data[2]["championId"];
-          champ.champKey["name"] =
-              GetChampions.getChampionNameById(snapshot.data[2]["championId"]);
-
-          print(champ.champKey.toString());
+          print(user.toString());
 
           return Column(children: <Widget>[
             Text("teste"),

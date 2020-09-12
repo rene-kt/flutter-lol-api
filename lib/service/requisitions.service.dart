@@ -20,7 +20,6 @@ class Requisition {
 
     http.Response response =
         await http.get(urlChampion + id + "?" + "api_key=" + key);
-    print(response.body);
     return json.decode(response.body);
   }
 }
