@@ -1,6 +1,11 @@
+import 'package:FlutterGifGallery/widgets-from-profile-page/return-level.widget.dart';
+import 'package:FlutterGifGallery/widgets-from-profile-page/return-rank.widget.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
+  final String text;
+  ProfilePage({Key key, @required this.text}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +35,7 @@ class ProfilePage extends StatelessWidget {
                     height: 10.0,
                   ),
                   Text(
-                    "Alice James",
+                    text,
                     //NOME DO INVOCADOR
                     style: TextStyle(
                       fontSize: 22.0,
@@ -51,80 +56,12 @@ class ProfilePage extends StatelessWidget {
                           horizontal: 8.0, vertical: 22.0),
                       child: Row(
                         children: <Widget>[
-                          Expanded(
-                            child: Column(
-                              children: <Widget>[
-                                Text(
-                                  "LEVEL",
-                                  style: TextStyle(
-                                    color: Colors.redAccent,
-                                    fontSize: 22.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5.0,
-                                ),
-                                Text(
-                                  "5200",
-                                  //SUMMONER LEVEL VINDO DA API
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    color: Colors.pinkAccent,
-                                  ),
-                                )
-                              ],
-                            ),
+                          ReturnLevel(
+                            level: 230,
                           ),
-                          Expanded(
-                            child: Column(
-                              children: <Widget>[
-                                Text(
-                                  "RANK",
-                                  style: TextStyle(
-                                    color: Colors.redAccent,
-                                    fontSize: 22.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5.0,
-                                ),
-                                Text(
-                                  "28.5K",
-                                  //RANKED VINDO DA API: OURO IV, 15 pdl
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    color: Colors.pinkAccent,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            child: Column(
-                              children: <Widget>[
-                                Text(
-                                  "W/R",
-                                  style: TextStyle(
-                                    color: Colors.redAccent,
-                                    fontSize: 22.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5.0,
-                                ),
-                                Text(
-                                  "1300",
-                                  //WR, WINS/LOSE
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    color: Colors.pinkAccent,
-                                  ),
-                                )
-                              ],
-                            ),
+                          ReturnRank(
+                            ranked: "0",
+                            tier: "0",
                           ),
                         ],
                       ),

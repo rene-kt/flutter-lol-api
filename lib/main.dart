@@ -1,5 +1,4 @@
 import 'package:FlutterGifGallery/widgets/form-widget.dart';
-import 'package:FlutterGifGallery/widgets/future-builder-champs.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:FlutterGifGallery/service/requisitions.service.dart';
 
@@ -20,7 +19,6 @@ class _HomeState extends State<Home> {
   Requisition requisition = Requisition();
   TextEditingController textController = TextEditingController();
   User user = User();
-  FutureBuilderChamps futureChamps = FutureBuilderChamps();
 
   @override
   Widget build(BuildContext context) {

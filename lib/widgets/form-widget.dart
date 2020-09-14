@@ -1,3 +1,4 @@
+import 'package:FlutterGifGallery/widgets/profile-page.widget.dart';
 import 'package:flutter/material.dart';
 
 class FormFieldWidget extends StatefulWidget {
@@ -25,8 +26,23 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
                 return null;
               }
             }),
-        RaisedButton(onPressed: () {}, child: Text("Submit")),
+        RaisedButton(
+            onPressed: () {
+              _sendDataToScreen(context);
+            },
+            child: Text("Submit")),
       ],
     ));
+  }
+
+  void _sendDataToScreen(BuildContext context) {
+    String textToSend = textController.text;
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ProfilePage(
+            text: textToSend,
+          ),
+        ));
   }
 }
