@@ -4,4 +4,6 @@ class RiotApi {
   static const String summonerIdUrl = "summoner/v4/summoners/by-name/";
   static const String championsUrl =
       "champion-mastery/v4/champion-masteries/by-summoner/";
+
+  static const String rankedUrl = "league/v4/entries/by-summoner/";
 }

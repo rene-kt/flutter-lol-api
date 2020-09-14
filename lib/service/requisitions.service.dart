@@ -22,4 +22,12 @@ class Requisition {
         await http.get(urlChampion + id + "?" + "api_key=" + key);
     return json.decode(response.body);
   }
+
+  Future<List> returnRank(String id) async {
+    String urlRanked = baseUrl + RiotApi.rankedUrl;
+
+    http.Response response =
+        await http.get(urlRanked + id + "?" + "api_key=" + key);
+    return json.decode(response.body);
+  }
 }
