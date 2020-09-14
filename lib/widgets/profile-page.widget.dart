@@ -1,4 +1,5 @@
 import 'package:FlutterGifGallery/models/user.model.dart';
+import 'package:FlutterGifGallery/service/requisitions.service.dart';
 import 'package:FlutterGifGallery/widgets-from-profile-page/return-level.widget.dart';
 import 'package:FlutterGifGallery/widgets-from-profile-page/return-rank.widget.dart';
 import 'package:FlutterGifGallery/widgets-from-profile-page/return-winrate-widget.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 class ProfilePage extends StatelessWidget {
   final User user;
   final String text;
+  final Requisition req = Requisition();
   ProfilePage({Key key, @required this.text, this.user}) : super(key: key);
 
   @override
@@ -18,7 +20,7 @@ class ProfilePage extends StatelessWidget {
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Colors.redAccent, Colors.pinkAccent])),
+                  colors: [Colors.deepPurple[200], Colors.deepPurple[300]])),
           child: Container(
             height: 350.0,
             child: Center(
@@ -28,7 +30,7 @@ class ProfilePage extends StatelessWidget {
                 children: <Widget>[
                   CircleAvatar(
                     backgroundImage: NetworkImage(
-                      "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg",
+                      req.returnUrlImage(user.profileIconId),
                       //PROFILE ICON DA API
                     ),
                     radius: 50.0,

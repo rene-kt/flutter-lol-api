@@ -53,6 +53,7 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
     await req.returnSummonerId(summonerName).then((data) {
       user.id = data["id"];
       user.summonerLevel = data["summonerLevel"];
+      user.profileIconId = data["profileIconId"];
       print("entrou");
     });
 

@@ -30,4 +30,8 @@ class Requisition {
         await http.get(urlRanked + id + "?" + "api_key=" + key);
     return json.decode(response.body);
   }
+
+  String returnUrlImage(int idIcon) {
+    return "http://ddragon.leagueoflegends.com/cdn/10.18.1/img/profileicon/$idIcon.png";
+  }
 }

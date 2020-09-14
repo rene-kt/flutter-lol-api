@@ -12,7 +12,7 @@ class ReturnWinrate extends StatelessWidget {
           Text(
             "W/R",
             style: TextStyle(
-              color: Colors.redAccent,
+              color: Colors.deepPurple,
               fontSize: 22.0,
               fontWeight: FontWeight.bold,
             ),
@@ -25,7 +25,7 @@ class ReturnWinrate extends StatelessWidget {
             //WR, WINS/LOSE
             style: TextStyle(
               fontSize: 20.0,
-              color: Colors.pinkAccent,
+              color: Colors.black,
             ),
           )
         ],

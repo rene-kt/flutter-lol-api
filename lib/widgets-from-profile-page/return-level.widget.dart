@@ -12,7 +12,7 @@ class ReturnLevel extends StatelessWidget {
           Text(
             "LEVEL",
             style: TextStyle(
-              color: Colors.redAccent,
+              color: Colors.deepPurple,
               fontSize: 22.0,
               fontWeight: FontWeight.bold,
             ),
@@ -25,7 +25,7 @@ class ReturnLevel extends StatelessWidget {
             //SUMMONER LEVEL VINDO DA API
             style: TextStyle(
               fontSize: 20.0,
-              color: Colors.pinkAccent,
+              color: Colors.black,
             ),
           )
         ],

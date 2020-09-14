@@ -15,7 +15,7 @@ class ReturnRank extends StatelessWidget {
           Text(
             "RANK",
             style: TextStyle(
-              color: Colors.redAccent,
+              color: Colors.deepPurple,
               fontSize: 22.0,
               fontWeight: FontWeight.bold,
             ),
@@ -28,7 +28,7 @@ class ReturnRank extends StatelessWidget {
             //RANKED VINDO DA API: OURO IV, 15 pdl
             style: TextStyle(
               fontSize: 20.0,
-              color: Colors.pinkAccent,
+              color: Colors.black,
             ),
           ),
         ],
