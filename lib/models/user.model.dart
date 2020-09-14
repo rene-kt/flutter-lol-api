@@ -14,7 +14,9 @@ class User {
   String toString() {
     String returnId = "ID: " + id;
     String returnLevel = "Level: " + summonerLevel.toString();
+    String returnRank = "Rank: " + rank;
+    String returnTier = "Tier: " + tier;
 
-    return returnId + returnLevel + champs.toString();
+    return returnId + returnLevel + champs.toString() + returnTier + returnRank;
   }
 }
