@@ -50,33 +50,30 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
   }
 
   Future<void> returnUserFromApi(String summonerName) async {
-    setState(() {
-      req.returnSummonerId(summonerName).then((data) {
-        user.id = data["id"];
-        user.summonerLevel = data["summonerLevel"];
-        print("entrou");
-      });
+    await req.returnSummonerId(summonerName).then((data) {
+      user.id = data["id"];
+      user.summonerLevel = data["summonerLevel"];
+      print("entrou");
+    });
 
-      // req.returnChampions(user.id).then((data) {
-      //   print("entrou");
+    await req.returnChampions(user.id).then((data) {
+      print("entrou");
 
-      //   for (int i = 0; i >= 2; i++) {
-      //     Champion champ = Champion();
-      //     champ.championId = data[i]["championId"];
-      //     champ.championName =
-      //         GetChampions.getChampionNameById(champ.championId);
-      //     champ.championsPoints = data[i]["championPoints"];
-      //     user.champs.add(champ);
-      //   }
-      // });
-      req.returnRank(user.id).then((data) {
-        print("entrou");
+      for (int i = 0; i >= 2; i++) {
+        Champion champ = Champion();
+        champ.championId = data[i]["championId"];
+        champ.championName = GetChampions.getChampionNameById(champ.championId);
+        champ.championsPoints = data[i]["championPoints"];
+        user.champs.add(champ);
+      }
+    });
+    await req.returnRank(user.id).then((data) {
+      print("entrou");
 
-        user.tier = data[0]['tier'];
-        user.rank = data[0]['rank'];
-        user.rankedPoints = data[0]['rankedPoints'];
-        user.winrate = user.calcWinrate(data[0]['wins'], data[0]['losses']);
-      });
+      user.tier = data[0]['tier'];
+      user.rank = data[0]['rank'];
+      user.rankedPoints = data[0]['rankedPoints'];
+      user.winrate = user.calcWinrate(data[0]['wins'], data[0]['losses']);
     });
     print(user.toString());
   }

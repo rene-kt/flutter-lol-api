@@ -11,7 +11,7 @@ class User {
   String winrate;
 
   String calcWinrate(int win, int lose) {
-    return (win / (win + lose) / 100).toStringAsPrecision(0) + "%";
+    return (win / (win + lose) * 100).toStringAsFixed(0) + "%";
   }
 
   @override

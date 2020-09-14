@@ -24,21 +24,13 @@ class ReturnRank extends StatelessWidget {
             height: 5.0,
           ),
           Text(
-            tier,
+            tier + " " + ranked,
             //RANKED VINDO DA API: OURO IV, 15 pdl
             style: TextStyle(
               fontSize: 20.0,
               color: Colors.pinkAccent,
             ),
           ),
-          Text(
-            ranked,
-            //RANKED VINDO DA API: OURO IV, 15 pdl
-            style: TextStyle(
-              fontSize: 20.0,
-              color: Colors.pinkAccent,
-            ),
-          )
         ],
       ),
     );
