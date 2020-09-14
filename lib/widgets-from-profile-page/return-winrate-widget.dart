@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ReturnWinrate extends StatelessWidget {
-  final int win;
-  final int lose;
-  ReturnWinrate({Key key, @required this.win, @required this.lose})
-      : super(key: key);
-
-  String _calculateWinrate() {
-    return (win / lose).toString() + "%";
-  }
+  final String winrate;
+  ReturnWinrate({Key key, @required this.winrate}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +21,7 @@ class ReturnWinrate extends StatelessWidget {
             height: 5.0,
           ),
           Text(
-            _calculateWinrate(),
+            winrate,
             //WR, WINS/LOSE
             style: TextStyle(
               fontSize: 20.0,

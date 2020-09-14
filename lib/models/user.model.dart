@@ -5,6 +5,10 @@ class User {
   int profileIconId;
   int summonerLevel;
   List<Champion> champs = List();
+  String rank;
+  String tier;
+  int rankedPoints;
+  String winrate;
 
   @override
   String toString() {

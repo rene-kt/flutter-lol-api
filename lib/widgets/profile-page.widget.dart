@@ -1,10 +1,13 @@
+import 'package:FlutterGifGallery/models/user.model.dart';
 import 'package:FlutterGifGallery/widgets-from-profile-page/return-level.widget.dart';
 import 'package:FlutterGifGallery/widgets-from-profile-page/return-rank.widget.dart';
+import 'package:FlutterGifGallery/widgets-from-profile-page/return-winrate-widget.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
+  final User user;
   final String text;
-  ProfilePage({Key key, @required this.text}) : super(key: key);
+  ProfilePage({Key key, @required this.text, this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,11 +60,14 @@ class ProfilePage extends StatelessWidget {
                       child: Row(
                         children: <Widget>[
                           ReturnLevel(
-                            level: 230,
+                            level: user.summonerLevel,
                           ),
                           ReturnRank(
-                            ranked: "0",
-                            tier: "0",
+                            ranked: user.rank,
+                            tier: user.tier,
+                          ),
+                          ReturnWinrate(
+                            winrate: user.winrate,
                           ),
                         ],
                       ),
