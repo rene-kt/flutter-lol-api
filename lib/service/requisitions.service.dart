@@ -34,4 +34,8 @@ class Requisition {
   String returnUrlImage(int idIcon) {
     return "http://ddragon.leagueoflegends.com/cdn/10.18.1/img/profileicon/$idIcon.png";
   }
+
+  String returnUrlChampImage(String champName) {
+    return "http://ddragon.leagueoflegends.com/cdn/10.18.1/img/champion/$champName.png";
+  }
 }

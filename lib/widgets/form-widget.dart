@@ -58,8 +58,6 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
     });
 
     await req.returnChampions(user.id).then((data) {
-      print("entrou");
-
       for (int i = 0; i >= 2; i++) {
         Champion champ = Champion();
         champ.championId = data[i]["championId"];
