@@ -54,27 +54,33 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
       user.id = data["id"];
       user.summonerLevel = data["summonerLevel"];
       user.profileIconId = data["profileIconId"];
-      print("entrou");
     });
+    req.returnChampions(user.id).then((data) {
+      List<Champion> champ = [];
 
-    await req.returnChampions(user.id).then((data) {
-      for (int i = 0; i >= 2; i++) {
-        Champion champ = Champion();
-        champ.championId = data[i]["championId"];
-        champ.championName = GetChampions.getChampionNameById(champ.championId);
-        champ.championsPoints = data[i]["championPoints"];
-        user.champs.add(champ);
-      }
+      champ.add(new Champion(
+          data[0]["championId"],
+          GetChampions.getChampionNameById(data[0]["championId"]),
+          data[0]["championPoints"]));
+
+      champ.add(new Champion(
+          data[1]["championId"],
+          GetChampions.getChampionNameById(data[1]["championId"]),
+          data[1]["championPoints"]));
+
+      champ.add(new Champion(
+          data[2]["championId"],
+          GetChampions.getChampionNameById(data[2]["championId"]),
+          data[2]["championPoints"]));
+
+      user.champs.addAll(champ);
     });
     await req.returnRank(user.id).then((data) {
-      print("entrou");
-
       user.tier = data[0]['tier'];
       user.rank = data[0]['rank'];
       user.rankedPoints = data[0]['rankedPoints'];
       user.winrate = user.calcWinrate(data[0]['wins'], data[0]['losses']);
     });
-    print(user.toString());
   }
 
   void _sendDataToScreen(BuildContext context) async {

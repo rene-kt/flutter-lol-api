@@ -82,7 +82,7 @@ class ProfilePage extends StatelessWidget {
       Padding(
           padding: EdgeInsets.only(top: 20.0),
           child: ChampRow(
-            champName: "Bard",
+            champName: user.champs.elementAt(0).championName,
           ))
     ]));
   }
