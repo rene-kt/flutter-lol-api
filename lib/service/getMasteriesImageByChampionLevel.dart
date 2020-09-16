@@ -23,6 +23,7 @@ class GetMasteriesImage {
         return "lib/images/masteries/7.png";
         break;
       default:
+        return "lib/assets/masteries/7.png";
     }
   }
 }

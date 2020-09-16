@@ -12,6 +12,18 @@ class CardContent extends StatelessWidget {
       @required this.championLevel})
       : super(key: key);
 
+  final nameTextStyle = TextStyle(
+      fontFamily: 'Poppins',
+      color: Colors.white,
+      fontSize: 18.0,
+      fontWeight: FontWeight.w600);
+
+  final championPointsStyle = TextStyle(
+      fontFamily: 'Poppins',
+      color: Colors.white,
+      fontSize: 10.0,
+      fontWeight: FontWeight.w300);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +34,8 @@ class CardContent extends StatelessWidget {
         children: <Widget>[
           new Container(height: 4.0),
           new Text(
-            champName,
+            '1 - ' + champName,
+            style: nameTextStyle,
           ),
           new Container(height: 10.0),
           new Container(
@@ -32,10 +45,16 @@ class CardContent extends StatelessWidget {
               color: new Color(0xff00c6ff)),
           new Row(
             children: <Widget>[
-              new Image.asset("images/masteries/7.png", height: 12.0),
+              new Image.asset(GetMasteriesImage.byChampionLevel(championLevel),
+                  height: 12.0),
+              new Text(
+                ' CHAMPION POINTS: ',
+                style: championPointsStyle,
+              ),
               new Container(width: 8.0),
               new Text(
                 championPoints.toString(),
+                style: championPointsStyle,
               ),
             ],
           ),
