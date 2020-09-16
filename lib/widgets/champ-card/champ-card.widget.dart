@@ -1,6 +1,18 @@
+import 'package:FlutterGifGallery/widgets/champ-card/champ-content.widget.dart';
 import 'package:flutter/material.dart';
 
 class ChampCard extends StatelessWidget {
+  final String champName;
+  final int championPoints;
+  final int championLevel;
+
+  ChampCard(
+      {Key key,
+      @required this.champName,
+      @required this.championPoints,
+      @required this.championLevel})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,6 +29,11 @@ class ChampCard extends StatelessWidget {
             offset: new Offset(0.0, 10.0),
           ),
         ],
+      ),
+      child: CardContent(
+        championLevel: championLevel,
+        championPoints: championPoints,
+        champName: champName,
       ),
     );
   }

@@ -4,7 +4,15 @@ import 'package:flutter/material.dart';
 
 class ChampRow extends StatelessWidget {
   final String champName;
-  ChampRow({Key key, @required this.champName}) : super(key: key);
+  final int championPoints;
+  final int championLevel;
+
+  ChampRow(
+      {Key key,
+      @required this.champName,
+      @required this.championPoints,
+      @required this.championLevel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +22,14 @@ class ChampRow extends StatelessWidget {
         horizontal: 24.0,
       ),
       child: new Stack(
-        children: <Widget>[ChampCard(), ChampThumb(champName: champName)],
+        children: <Widget>[
+          ChampCard(
+            championLevel: championLevel,
+            championPoints: championPoints,
+            champName: champName,
+          ),
+          ChampThumb(champName: champName)
+        ],
       ),
     );
   }

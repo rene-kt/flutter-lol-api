@@ -61,17 +61,20 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
       champ.add(new Champion(
           data[0]["championId"],
           GetChampions.getChampionNameById(data[0]["championId"]),
-          data[0]["championPoints"]));
+          data[0]["championPoints"],
+          data[0]["championLevel"]));
 
       champ.add(new Champion(
           data[1]["championId"],
           GetChampions.getChampionNameById(data[1]["championId"]),
-          data[1]["championPoints"]));
+          data[1]["championPoints"],
+          data[1]["championLevel"]));
 
       champ.add(new Champion(
           data[2]["championId"],
           GetChampions.getChampionNameById(data[2]["championId"]),
-          data[2]["championPoints"]));
+          data[2]["championPoints"],
+          data[2]["championLevel"]));
 
       user.champs.addAll(champ);
     });
