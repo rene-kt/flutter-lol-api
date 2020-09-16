@@ -5,11 +5,14 @@ class CardContent extends StatelessWidget {
   final String champName;
   final int championPoints;
   final int championLevel;
+  final int index;
+
   CardContent(
       {Key key,
       @required this.champName,
       @required this.championPoints,
-      @required this.championLevel})
+      @required this.championLevel,
+      @required this.index})
       : super(key: key);
 
   final nameTextStyle = TextStyle(
@@ -34,7 +37,7 @@ class CardContent extends StatelessWidget {
         children: <Widget>[
           new Container(height: 4.0),
           new Text(
-            '1 - ' + champName,
+            index.toString() + ' - ' + champName,
             style: nameTextStyle,
           ),
           new Container(height: 10.0),

@@ -10,11 +10,11 @@ class ChampThumb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: new EdgeInsets.symmetric(vertical: 16.0),
       alignment: FractionalOffset.centerLeft,
       child: CircleAvatar(
         backgroundImage: NetworkImage(
           req.returnUrlChampImage(champName),
+
           //PROFILE ICON DA API
         ),
         radius: 50.0,

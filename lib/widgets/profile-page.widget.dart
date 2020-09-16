@@ -79,12 +79,17 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
           )),
-      Padding(
-          padding: EdgeInsets.only(top: 20.0),
-          child: ChampRow(
-              champName: user.champs.elementAt(0).championName,
-              championLevel: user.champs.elementAt(0).championLevel,
-              championPoints: user.champs.elementAt(0).championsPoints))
+      Expanded(
+        child: new ListView.builder(
+          itemBuilder: (context, index) => new ChampRow(
+              champName: user.champs.elementAt(index).championName,
+              championPoints: user.champs.elementAt(index).championsPoints,
+              championLevel: user.champs.elementAt(index).championLevel,
+              index: index + 1),
+          itemCount: user.champs.length,
+          padding: EdgeInsets.symmetric(vertical: 16.0),
+        ),
+      )
     ]));
   }
 }

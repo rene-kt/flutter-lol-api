@@ -6,15 +6,16 @@ class ChampRow extends StatelessWidget {
   final String champName;
   final int championPoints;
   final int championLevel;
+  final int index;
 
   ChampRow(
       {Key key,
       @required this.champName,
       @required this.championPoints,
-      @required this.championLevel})
+      @required this.championLevel,
+      @required this.index})
       : super(key: key);
 
-  @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(
@@ -27,6 +28,7 @@ class ChampRow extends StatelessWidget {
             championLevel: championLevel,
             championPoints: championPoints,
             champName: champName,
+            index: index,
           ),
           ChampThumb(champName: champName)
         ],

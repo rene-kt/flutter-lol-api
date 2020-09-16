@@ -5,12 +5,14 @@ class ChampCard extends StatelessWidget {
   final String champName;
   final int championPoints;
   final int championLevel;
+  final int index;
 
   ChampCard(
       {Key key,
       @required this.champName,
       @required this.championPoints,
-      @required this.championLevel})
+      @required this.championLevel,
+      @required this.index})
       : super(key: key);
 
   @override
@@ -34,6 +36,7 @@ class ChampCard extends StatelessWidget {
         championLevel: championLevel,
         championPoints: championPoints,
         champName: champName,
+        index: index,
       ),
     );
   }
