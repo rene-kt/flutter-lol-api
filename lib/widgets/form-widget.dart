@@ -17,12 +17,6 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
   bool isLoading = false;
 
   @override
-  void initState() {
-
-    setstat
-    super.initState();
-  }
-  @override
   Widget build(BuildContext context) {
     return Container(
         child: isLoading
@@ -47,6 +41,9 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
                       onPressed: () async {
                         setState(() {
                           isLoading = true;
+                          if (user.champs.isNotEmpty) {
+                            user.champs.removeRange(0, user.champs.length);
+                          }
                         });
                         _sendDataToScreen(context);
                       },
