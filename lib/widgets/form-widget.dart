@@ -17,6 +17,12 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
   bool isLoading = false;
 
   @override
+  void initState() {
+
+    setstat
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Container(
         child: isLoading
@@ -89,14 +95,15 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
   void _sendDataToScreen(BuildContext context) async {
     await returnUserFromApi(textController.text);
     String textToSend = textController.text;
-    isLoading = false;
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ProfilePage(
-            text: textToSend,
-            user: user,
-          ),
-        ));
+
+    setState(() {
+      isLoading = false;
+    });
+
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => ProfilePage(
+              text: textToSend,
+              user: user,
+            )));
   }
 }
