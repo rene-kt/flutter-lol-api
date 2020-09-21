@@ -1,5 +1,8 @@
 import 'package:FlutterGifGallery/control/return-user-api.dart';
+import 'package:FlutterGifGallery/models/champion.model.dart';
 import 'package:FlutterGifGallery/models/user.model.dart';
+import 'package:FlutterGifGallery/service/getChampions.service.dart';
+import 'package:FlutterGifGallery/service/requisitions.service.dart';
 import 'package:FlutterGifGallery/widgets/profile-page.widget.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +15,7 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
   TextEditingController textController = TextEditingController();
   bool isLoading = false;
   User user = User();
+  Requisition req = Requisition();
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +26,20 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
               )
             : new Column(
                 children: <Widget>[
-                  TextFormField(
-                      controller: textController,
-                      decoration: const InputDecoration(
+                  TextField(
+                    controller: textController,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: const BorderRadius.all(
+                            const Radius.circular(10.0),
+                          ),
+                        ),
                         hintText: 'Type the summoner name',
-                      ),
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return "Please, enter some text";
-                        } else {
-                          return null;
-                        }
-                      }),
+                        icon: Icon(Icons.search),
+                        fillColor: Colors.deepPurple),
+                  ),
                   RaisedButton(
                       onPressed: () {
-                        user =
-                            ReturnUser.returnUserFromApi(textController.text);
                         setState(() {
                           isLoading = true;
                           if (user.champs.isNotEmpty) {
@@ -51,7 +53,46 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
               ));
   }
 
+  Future<void> returnUserFromApi(String summonerName) async {
+    await req.returnSummonerId(summonerName).then((data) {
+      user.id = data["id"];
+      user.summonerLevel = data["summonerLevel"];
+      user.profileIconId = data["profileIconId"];
+    });
+    req.returnChampions(user.id).then((data) {
+      List<Champion> champ = [];
+
+      champ.add(new Champion(
+          data[0]["championId"],
+          GetChampions.getChampionNameById(data[0]["championId"]),
+          data[0]["championPoints"],
+          data[0]["championLevel"]));
+
+      champ.add(new Champion(
+          data[1]["championId"],
+          GetChampions.getChampionNameById(data[1]["championId"]),
+          data[1]["championPoints"],
+          data[1]["championLevel"]));
+
+      champ.add(new Champion(
+          data[2]["championId"],
+          GetChampions.getChampionNameById(data[2]["championId"]),
+          data[2]["championPoints"],
+          data[2]["championLevel"]));
+
+      user.champs.addAll(champ);
+    });
+    await req.returnRank(user.id).then((data) {
+      user.tier = data[0]['tier'];
+      user.rank = data[0]['rank'];
+      user.rankedPoints = data[0]['rankedPoints'];
+      user.winrate = user.calcWinrate(data[0]['wins'], data[0]['losses']);
+    });
+  }
+
   void _sendDataToScreen(BuildContext context) async {
+    await returnUserFromApi(textController.text);
+
     setState(() {
       isLoading = false;
     });
