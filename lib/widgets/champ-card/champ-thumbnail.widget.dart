@@ -11,13 +11,10 @@ class ChampThumb extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: FractionalOffset.centerLeft,
-      child: CircleAvatar(
-        backgroundImage: NetworkImage(
-          req.returnUrlChampImage(champName),
-
-          //PROFILE ICON DA API
-        ),
-        radius: 50.0,
+      child: Image.network(
+        req.returnUrlChampImage(champName),
+        width: 100.0,
+        //PROFILE ICON DA API
       ),
     );
   }

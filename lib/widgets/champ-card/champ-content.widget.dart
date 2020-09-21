@@ -45,7 +45,7 @@ class CardContent extends StatelessWidget {
               margin: new EdgeInsets.symmetric(vertical: 8.0),
               height: 2.0,
               width: 18.0,
-              color: new Color(0xff00c6ff)),
+              color: Colors.deepPurple),
           new Row(
             children: <Widget>[
               new Image.asset(GetMasteriesImage.byChampionLevel(championLevel),
