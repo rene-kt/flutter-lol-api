@@ -47,17 +47,30 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
                       fillColor: Colors.deepPurple,
                     ),
                   ),
-                  RaisedButton(
-                      onPressed: () {
-                        setState(() {
-                          isLoading = true;
-                          if (user.champs.isNotEmpty) {
-                            user.champs.removeRange(0, user.champs.length);
-                          }
-                        });
-                        _sendDataToScreen(context);
-                      },
-                      child: Text("Submit")),
+                  Padding(
+                    padding: EdgeInsets.only(top: 15.0),
+                    child: Container(
+                      width: 300.0,
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.deepPurple)),
+                        onPressed: () {
+                          setState(() {
+                            isLoading = true;
+                            if (user.champs.isNotEmpty) {
+                              user.champs.removeRange(0, user.champs.length);
+                            }
+                          });
+                          _sendDataToScreen(context);
+                        },
+                        color: Colors.deepPurple,
+                        textColor: Colors.white,
+                        child: Text("submit".toUpperCase(),
+                            style: TextStyle(fontSize: 14)),
+                      ),
+                    ),
+                  ),
                 ],
               ));
   }

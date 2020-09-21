@@ -21,14 +21,7 @@ class ProfilePage extends StatelessWidget {
         ),
         body: Column(children: <Widget>[
           Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                    Colors.deepPurple[200],
-                    Colors.deepPurple[300]
-                  ])),
+              decoration: BoxDecoration(),
               child: Container(
                 height: 350.0,
                 child: Center(
@@ -47,7 +40,7 @@ class ProfilePage extends StatelessWidget {
                         height: 10.0,
                       ),
                       Text(
-                        text,
+                        text.toUpperCase(),
                         //NOME DO INVOCADOR
                         style: TextStyle(
                           fontSize: 22.0,

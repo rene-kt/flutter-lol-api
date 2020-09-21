@@ -6,7 +6,14 @@ void main() {
     home: Home(),
     theme: ThemeData(
       brightness: Brightness.dark,
-      accentColor: Colors.white, // default value
+      accentColor: Colors.white,
+      cursorColor: Colors.white,
+      focusColor: Colors.white,
+      textSelectionColor: Colors.deepPurple[100],
+      indicatorColor: Colors.white,
+      hoverColor: Colors.white,
+      textSelectionHandleColor: Colors.white,
+      // default value
     ),
   ));
 }
