@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     home: Home(),
+    theme: ThemeData(
+      brightness: Brightness.dark,
+      accentColor: Colors.white, // default value
+    ),
   ));
 }
 

@@ -28,15 +28,24 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
                 children: <Widget>[
                   TextField(
                     controller: textController,
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: const BorderRadius.all(
-                            const Radius.circular(10.0),
-                          ),
+                    style: TextStyle(color: Colors.white),
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      suffixIcon: Icon(Icons.search),
+                      suffixStyle: TextStyle(color: Colors.white),
+                      hintText: 'Enter a summoner name',
+                      hintStyle: TextStyle(fontSize: 16, color: Colors.white),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
                         ),
-                        hintText: 'Type the summoner name',
-                        icon: Icon(Icons.search),
-                        fillColor: Colors.deepPurple),
+                      ),
+                      filled: true,
+                      contentPadding: EdgeInsets.all(16),
+                      fillColor: Colors.deepPurple,
+                    ),
                   ),
                   RaisedButton(
                       onPressed: () {
