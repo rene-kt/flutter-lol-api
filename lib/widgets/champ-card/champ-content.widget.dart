@@ -1,4 +1,3 @@
-import 'package:FlutterGifGallery/service/getMasteriesImageByChampionLevel.dart';
 import 'package:flutter/material.dart';
 
 class CardContent extends StatelessWidget {
@@ -48,8 +47,6 @@ class CardContent extends StatelessWidget {
               color: Colors.deepPurple),
           new Row(
             children: <Widget>[
-              new Image.asset(GetMasteriesImage.byChampionLevel(championLevel),
-                  height: 12.0),
               new Text(
                 ' CHAMPION POINTS: ',
                 style: championPointsStyle,

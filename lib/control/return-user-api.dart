@@ -1,6 +1,6 @@
 import 'package:FlutterGifGallery/models/champion.model.dart';
 import 'package:FlutterGifGallery/models/user.model.dart';
-import 'package:FlutterGifGallery/service/getChampions.service.dart';
+import 'package:FlutterGifGallery/service/get-champion-by-id.service.dart';
 import 'package:FlutterGifGallery/service/requisitions.service.dart';
 
 class ReturnUser {
