@@ -56,6 +56,17 @@ flutter:
     - lib/assets/masteries/5.png
     - lib/assets/masteries/6.png
     - lib/assets/masteries/7.png
+
+
+    - lib/assets/ranks/iron.png
+    - lib/assets/ranks/bronze.png
+    - lib/assets/ranks/silver.png
+    - lib/assets/ranks/gold.png
+    - lib/assets/ranks/platinum.png
+    - lib/assets/ranks/diamond.png
+    - lib/assets/ranks/master.png
+    - lib/assets/ranks/grandmaster.png
+    - lib/assets/ranks/challenger.png
   
   fonts:
     - family: Poppins
