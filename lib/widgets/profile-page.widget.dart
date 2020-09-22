@@ -11,9 +11,19 @@ class ProfilePage extends StatelessWidget {
   ProfilePage({Key key, @required this.text, this.user}) : super(key: key);
 
   final titleTextStyle = TextStyle(
-    color: Colors.deepPurple,
-    fontWeight: FontWeight.w700,
+    color: Colors.white,
+    fontWeight: FontWeight.w800,
+    fontSize: 22.0,
   );
+
+  final tierTextStyle = TextStyle(
+      color: Colors.white, fontWeight: FontWeight.w500, fontSize: 18.0);
+  //retornar a cor do tier
+
+  final pointsStyle = TextStyle(color: Colors.white, fontSize: 15.0);
+
+  final winsLossesStyle =
+      TextStyle(color: Colors.blueGrey[100], fontSize: 13.0);
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +46,38 @@ class ProfilePage extends StatelessWidget {
                   ),
                   Column(
                     children: <Widget>[
-                      Text("RANKED SOLO"),
-                      Text(user.tier + " " + user.rank),
-                      Text(user.rankedPoints.toString() + " LP"),
-                      Text(user.wins.toString() +
-                          "W" +
-                          " " +
-                          user.losses.toString() +
-                          "L" +
-                          " => " +
-                          user.calcWinrate().toStringAsFixed(0) +
-                          "%")
+                      Container(
+                        alignment: Alignment.topCenter,
+                        child: Text("RANKED SOLO", style: titleTextStyle),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(top: 15.0),
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              user.tier + " " + user.rank,
+                              style: tierTextStyle,
+                            ),
+                            Text(user.rankedPoints.toString() + " LP",
+                                style: pointsStyle),
+                            Text(
+                                user.wins.toString() +
+                                    "W" +
+                                    " " +
+                                    user.losses.toString() +
+                                    "L",
+                                style: winsLossesStyle),
+                            Text(user.calcWinrate().toStringAsFixed(0) + "%",
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w500,
+                                  color: user.calcWinrate() >= 50.0
+                                      ? Colors.lightBlue[200]
+                                      : Colors.red[200],
+                                ))
+                          ],
+                        ),
+                      )
                     ],
                   )
                 ],
