@@ -1,9 +1,6 @@
 import 'package:FlutterGifGallery/models/user.model.dart';
 import 'package:FlutterGifGallery/service/get-rank-emblem.dart';
 import 'package:FlutterGifGallery/service/requisitions.service.dart';
-import 'package:FlutterGifGallery/widgets-from-profile-page/return-level.widget.dart';
-import 'package:FlutterGifGallery/widgets-from-profile-page/return-rank.widget.dart';
-import 'package:FlutterGifGallery/widgets-from-profile-page/return-winrate-widget.dart';
 import 'package:FlutterGifGallery/widgets/champ-card/champ-row.widget.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +9,11 @@ class ProfilePage extends StatelessWidget {
   final String text;
   final Requisition req = Requisition();
   ProfilePage({Key key, @required this.text, this.user}) : super(key: key);
+
+  final titleTextStyle = TextStyle(
+    color: Colors.deepPurple,
+    fontWeight: FontWeight.w700,
+  );
 
   @override
   Widget build(BuildContext context) {
