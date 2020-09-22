@@ -1,4 +1,3 @@
-import 'package:FlutterGifGallery/control/return-user-api.dart';
 import 'package:FlutterGifGallery/models/champion.model.dart';
 import 'package:FlutterGifGallery/models/user.model.dart';
 import 'package:FlutterGifGallery/service/get-champion-by-id.service.dart';
@@ -107,8 +106,9 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
     await req.returnRank(user.id).then((data) {
       user.tier = data[0]['tier'];
       user.rank = data[0]['rank'];
-      user.rankedPoints = data[0]['rankedPoints'];
-      user.winrate = user.calcWinrate(data[0]['wins'], data[0]['losses']);
+      user.rankedPoints = data[0]['leaguePoints'];
+      user.wins = data[0]['wins'];
+      user.losses = data[0]['losses'];
     });
   }
 

@@ -1,4 +1,5 @@
 import 'package:FlutterGifGallery/models/user.model.dart';
+import 'package:FlutterGifGallery/service/get-rank-emblem.dart';
 import 'package:FlutterGifGallery/service/requisitions.service.dart';
 import 'package:FlutterGifGallery/widgets-from-profile-page/return-level.widget.dart';
 import 'package:FlutterGifGallery/widgets-from-profile-page/return-rank.widget.dart';
@@ -21,70 +22,35 @@ class ProfilePage extends StatelessWidget {
         ),
         body: Column(children: <Widget>[
           Container(
-            padding: EdgeInsets.all(10.0),
+            height: 180.0,
+            width: 300.0,
             child: Card(
-              child: Column(children: <Widget>[]),
+              child: GridView.count(
+                crossAxisCount: 2,
+                padding: EdgeInsets.only(top: 10.0),
+                children: <Widget>[
+                  Image.asset(
+                    GetRankImage.returnImage(user.tier),
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Text("RANKED SOLO"),
+                      Text(user.tier + " " + user.rank),
+                      Text(user.rankedPoints.toString() + " LP"),
+                      Text(user.wins.toString() +
+                          "W" +
+                          " " +
+                          user.losses.toString() +
+                          "L" +
+                          " => " +
+                          user.calcWinrate().toStringAsFixed(0) +
+                          "%")
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
-          // Container(
-          //     decoration: BoxDecoration(),
-          //     child: Container(
-          //       height: 350.0,
-          //       child: Center(
-          //         child: Column(
-          //           crossAxisAlignment: CrossAxisAlignment.center,
-          //           mainAxisAlignment: MainAxisAlignment.center,
-          //           children: <Widget>[
-          //             CircleAvatar(
-          //               backgroundImage: NetworkImage(
-          //                 req.returnUrlImage(user.profileIconId),
-          //                 //PROFILE ICON DA API
-          //               ),
-          //               radius: 50.0,
-          //             ),
-          //             SizedBox(
-          //               height: 10.0,
-          //             ),
-          //             Text(
-          //               text.toUpperCase(),
-          //               //NOME DO INVOCADOR
-          //               style: TextStyle(
-          //                 fontSize: 22.0,
-          //                 color: Colors.white,
-          //               ),
-          //             ),
-          //             SizedBox(
-          //               height: 10.0,
-          //             ),
-          //             Card(
-          //               margin: EdgeInsets.symmetric(
-          //                   horizontal: 20.0, vertical: 5.0),
-          //               clipBehavior: Clip.antiAlias,
-          //               color: Colors.white,
-          //               elevation: 5.0,
-          //               child: Padding(
-          //                 padding: const EdgeInsets.symmetric(
-          //                     horizontal: 8.0, vertical: 22.0),
-          //                 child: Row(
-          //                   children: <Widget>[
-          //                     ReturnLevel(
-          //                       level: user.summonerLevel,
-          //                     ),
-          //                     ReturnRank(
-          //                       ranked: user.rank,
-          //                       tier: user.tier,
-          //                     ),
-          //                     ReturnWinrate(
-          //                       winrate: user.winrate,
-          //                     ),
-          //                   ],
-          //                 ),
-          //               ),
-          //             )
-          //           ],
-          //         ),
-          //       ),
-          //     )),
           Expanded(
             child: new ListView.builder(
               itemBuilder: (context, index) => new ChampRow(

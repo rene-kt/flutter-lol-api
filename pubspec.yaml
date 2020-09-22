@@ -49,15 +49,6 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/assets/masteries/1.png
-    - lib/assets/masteries/2.png
-    - lib/assets/masteries/3.png
-    - lib/assets/masteries/4.png
-    - lib/assets/masteries/5.png
-    - lib/assets/masteries/6.png
-    - lib/assets/masteries/7.png
-
-
     - lib/assets/ranks/iron.png
     - lib/assets/ranks/bronze.png
     - lib/assets/ranks/silver.png

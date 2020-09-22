@@ -8,10 +8,11 @@ class User {
   String rank;
   String tier;
   int rankedPoints;
-  String winrate;
+  int wins;
+  int losses;
 
-  String calcWinrate(int win, int lose) {
-    return (win / (win + lose) * 100).toStringAsFixed(0) + "%";
+  double calcWinrate() {
+    return (wins / (wins + losses) * 100);
   }
 
   @override
