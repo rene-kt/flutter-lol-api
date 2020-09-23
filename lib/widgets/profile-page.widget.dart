@@ -25,79 +25,85 @@ class ProfilePage extends StatelessWidget {
   final winsLossesStyle =
       TextStyle(color: Colors.blueGrey[100], fontSize: 13.0);
 
+  Widget champCard(String rankedType, int index) {
+    return Card(
+        child: SizedBox(
+      width: 280.0,
+      height: 150.0,
+      child: GridView.count(
+        crossAxisCount: 2,
+        padding: EdgeInsets.only(top: 10.0),
+        children: <Widget>[
+          Image.asset(
+            GetRankImage.returnImage(user.ranks.elementAt(0).tier),
+          ),
+          Column(
+            children: <Widget>[
+              Container(
+                child: Text(rankedType, style: titleTextStyle),
+              ),
+              Container(
+                padding: EdgeInsets.only(top: 15.0),
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                      user.ranks.elementAt(index).tier +
+                          " " +
+                          user.ranks.elementAt(index).rank,
+                      style: tierTextStyle,
+                    ),
+                    Text(
+                        user.ranks.elementAt(index).leaguePoints.toString() +
+                            " LP",
+                        style: pointsStyle),
+                    Text(
+                        user.ranks.elementAt(index).wins.toString() +
+                            "W" +
+                            " " +
+                            user.ranks.elementAt(index).losses.toString() +
+                            "L",
+                        style: winsLossesStyle),
+                    Text(
+                        user.ranks
+                                .elementAt(index)
+                                .calcWinrate()
+                                .toStringAsFixed(0) +
+                            "%",
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.w500,
+                          color:
+                              user.ranks.elementAt(index).calcWinrate() >= 50.0
+                                  ? Colors.lightBlue[200]
+                                  : Colors.red[200],
+                        ))
+                  ],
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("profile page"),
+          title: Text(text.toUpperCase() + "'S PROFILE"),
           backgroundColor: Colors.black,
         ),
         body: Column(children: <Widget>[
           Container(
-            height: 180.0,
-            width: 300.0,
-            child: Card(
-              child: GridView.count(
-                crossAxisCount: 2,
-                padding: EdgeInsets.only(top: 10.0),
-                children: <Widget>[
-                  Image.asset(
-                    GetRankImage.returnImage(user.ranks.elementAt(0).tier),
-                  ),
-                  Column(
-                    children: <Widget>[
-                      Container(
-                        alignment: Alignment.topCenter,
-                        child: Text("RANKED SOLO", style: titleTextStyle),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(top: 15.0),
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              user.ranks.elementAt(0).tier +
-                                  " " +
-                                  user.ranks.elementAt(0).rank,
-                              style: tierTextStyle,
-                            ),
-                            Text(
-                                user.ranks
-                                        .elementAt(0)
-                                        .leaguePoints
-                                        .toString() +
-                                    " LP",
-                                style: pointsStyle),
-                            Text(
-                                user.ranks.elementAt(0).wins.toString() +
-                                    "W" +
-                                    " " +
-                                    user.ranks.elementAt(0).losses.toString() +
-                                    "L",
-                                style: winsLossesStyle),
-                            Text(
-                                user.ranks
-                                        .elementAt(0)
-                                        .calcWinrate()
-                                        .toStringAsFixed(0) +
-                                    "%",
-                                style: TextStyle(
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.w500,
-                                  color:
-                                      user.ranks.elementAt(0).calcWinrate() >=
-                                              50.0
-                                          ? Colors.lightBlue[200]
-                                          : Colors.red[200],
-                                ))
-                          ],
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
+              height: 180.0,
+              width: 300.0,
+              margin: EdgeInsets.symmetric(horizontal: 10.0),
+              child:
+                  ListView(scrollDirection: Axis.horizontal, children: <Widget>[
+                champCard("SOLO", 0),
+                champCard("FLEX", 1),
+              ])),
           Expanded(
             child: new ListView.builder(
               itemBuilder: (context, index) => new ChampRow(

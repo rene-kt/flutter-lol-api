@@ -14,6 +14,7 @@ class ChampThumb extends StatelessWidget {
       child: Image.network(
         req.returnUrlChampImage(champName),
         width: 100.0,
+
         //PROFILE ICON DA API
       ),
     );
