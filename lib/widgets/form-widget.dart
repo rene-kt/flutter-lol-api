@@ -61,6 +61,10 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
                             if (user.champs.isNotEmpty) {
                               user.champs.removeRange(0, user.champs.length);
                             }
+
+                            if (user.ranks.isNotEmpty) {
+                              user.ranks.removeRange(0, user.ranks.length);
+                            }
                           });
                           _sendDataToScreen(context);
                         },
@@ -129,14 +133,13 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
   void _sendDataToScreen(BuildContext context) async {
     await returnUserFromApi(textController.text);
 
-    setState(() {
-      isLoading = false;
-    });
-
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => ProfilePage(
               text: textController.text,
               user: user,
             )));
+    setState(() {
+      isLoading = false;
+    });
   }
 }

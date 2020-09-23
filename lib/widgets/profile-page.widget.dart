@@ -35,7 +35,7 @@ class ProfilePage extends StatelessWidget {
         padding: EdgeInsets.only(top: 10.0),
         children: <Widget>[
           Image.asset(
-            GetRankImage.returnImage(user.ranks.elementAt(0).tier),
+            GetRankImage.returnImage(user.ranks.elementAt(index).tier),
           ),
           Column(
             children: <Widget>[

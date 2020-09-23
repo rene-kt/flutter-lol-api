@@ -20,7 +20,7 @@ class GetChampions {
         return "Urgot";
         break;
       case 7:
-        return "LeBlanc";
+        return "Leblanc";
         break;
       case 8:
         return "Vladimir";
