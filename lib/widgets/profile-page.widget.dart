@@ -42,7 +42,7 @@ class ProfilePage extends StatelessWidget {
                 padding: EdgeInsets.only(top: 10.0),
                 children: <Widget>[
                   Image.asset(
-                    GetRankImage.returnImage(user.tier),
+                    GetRankImage.returnImage(user.ranks.elementAt(0).tier),
                   ),
                   Column(
                     children: <Widget>[
@@ -55,25 +55,39 @@ class ProfilePage extends StatelessWidget {
                         child: Column(
                           children: <Widget>[
                             Text(
-                              user.tier + " " + user.rank,
+                              user.ranks.elementAt(0).tier +
+                                  " " +
+                                  user.ranks.elementAt(0).rank,
                               style: tierTextStyle,
                             ),
-                            Text(user.rankedPoints.toString() + " LP",
+                            Text(
+                                user.ranks
+                                        .elementAt(0)
+                                        .leaguePoints
+                                        .toString() +
+                                    " LP",
                                 style: pointsStyle),
                             Text(
-                                user.wins.toString() +
+                                user.ranks.elementAt(0).wins.toString() +
                                     "W" +
                                     " " +
-                                    user.losses.toString() +
+                                    user.ranks.elementAt(0).losses.toString() +
                                     "L",
                                 style: winsLossesStyle),
-                            Text(user.calcWinrate().toStringAsFixed(0) + "%",
+                            Text(
+                                user.ranks
+                                        .elementAt(0)
+                                        .calcWinrate()
+                                        .toStringAsFixed(0) +
+                                    "%",
                                 style: TextStyle(
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.w500,
-                                  color: user.calcWinrate() >= 50.0
-                                      ? Colors.lightBlue[200]
-                                      : Colors.red[200],
+                                  color:
+                                      user.ranks.elementAt(0).calcWinrate() >=
+                                              50.0
+                                          ? Colors.lightBlue[200]
+                                          : Colors.red[200],
                                 ))
                           ],
                         ),

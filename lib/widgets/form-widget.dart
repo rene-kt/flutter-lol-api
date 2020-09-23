@@ -1,4 +1,5 @@
 import 'package:FlutterGifGallery/models/champion.model.dart';
+import 'package:FlutterGifGallery/models/user-rank.model.dart';
 import 'package:FlutterGifGallery/models/user.model.dart';
 import 'package:FlutterGifGallery/service/get-champion-by-id.service.dart';
 import 'package:FlutterGifGallery/service/requisitions.service.dart';
@@ -104,11 +105,24 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
       user.champs.addAll(champ);
     });
     await req.returnRank(user.id).then((data) {
-      user.tier = data[0]['tier'];
-      user.rank = data[0]['rank'];
-      user.rankedPoints = data[0]['leaguePoints'];
-      user.wins = data[0]['wins'];
-      user.losses = data[0]['losses'];
+      List<UserRank> ranks = [];
+
+      ranks.add(new UserRank(
+        data[0]['rank'],
+        data[0]['tier'],
+        data[0]['leaguePoints'],
+        data[0]['wins'],
+        data[0]['losses'],
+      ));
+
+      ranks.add(new UserRank(
+        data[1]['rank'],
+        data[1]['tier'],
+        data[1]['leaguePoints'],
+        data[1]['wins'],
+        data[1]['losses'],
+      ));
+      user.ranks.addAll(ranks);
     });
   }
 
